@@ -14,7 +14,7 @@ import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class QrFragment extends Fragment implements ZXingScannerView.ResultHandler{
+public class QrFragment extends Fragment implements ZXingScannerView.ResultHandler {
 
     private ZXingScannerView zXingScannerView;
 
@@ -45,7 +45,6 @@ public class QrFragment extends Fragment implements ZXingScannerView.ResultHandl
 
         String resultString = result.getText().toString().trim();
         Intent intent = new Intent(getActivity(), MainActivity.class);
-        intent.putExtra("ResultQR", resultString);
         getActivity().setResult(100, intent);
         getActivity().finish();
 
