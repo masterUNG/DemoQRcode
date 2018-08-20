@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,19 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class QrFragment extends Fragment implements ZXingScannerView.ResultHandler{
 
     private ZXingScannerView zXingScannerView;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        zXingScannerView.setResultHandler(this);
+        zXingScannerView.startCamera();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        zXingScannerView.stopCamera();
+    }
 
     @Nullable
     @Override

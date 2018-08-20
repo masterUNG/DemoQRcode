@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainFragment extends Fragment{
 
@@ -26,9 +27,10 @@ public class MainFragment extends Fragment{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == getActivity().RESULT_OK) {
-            String resultQrString = getActivity().getIntent().getStringExtra("ResultQR");
-            Log.d("20AugV1", "QR ==> " + resultQrString);
+        String resultString = data.getStringExtra("ResultQR");
+        if (!resultString.isEmpty()) {
+            TextView textView = getView().findViewById(R.id.txtResult);
+            textView.setText(resultString);
         }
 
     }
